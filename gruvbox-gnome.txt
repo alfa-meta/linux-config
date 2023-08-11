@@ -1,0 +1,77 @@
+sudo dnf update && sudo dnf upgrade -y
+sudo dnf install gnome-tweak-tool gnome-extensions-app git curl rsync
+
+## Install GNOME Extensions Addons for Web Browser
+
+## Download Files from the following link: https://www.pling.com/p/2046839/
+## Originally 13 Files.
+
+unzip ~/Downloads/themes.zip -d ~/Downloads/
+rsync -av ~/Downloads/themes/.themes ~
+ls -al ~/.themes
+
+ln -s ~/.themes/Gruvbox-Dark-BL-MOD/gtk-4.0/assets ~/.config/gtk-4.0
+ln -s ~/.themes/Gruvbox-Dark-BL-MOD/gtk-4.0/gtk.css ~/.config/gtk-4.0
+ln -s ~/.themes/Gruvbox-Dark-BL-MOD/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0
+
+sudo flatpak override --filesystem=$HOME/.themes
+sudo flatpak override --filesystem=xdg-config/gtk-4.0
+flatpak override --user --filesystem=xdg-config/gtk-4.0
+
+unzip ~/Downloads/icons.zip -d ~/Downloads/
+rsync -av ~/Downloads/icons/.local ~
+ls -al ~/.themes
+
+sudo flatpak override --filesystem=$HOME/.local/share/icons
+
+unzip ~/Downloads/cursors.zip -d ~/Downloads/
+rsync -av ~/Downloads/cursors/ ~
+ls -al ~/.icons
+
+## Installing Fonts and Wallpapers
+unzip ~/Downloads/fonts.zip -d ~/Downloads/
+rsync -av ~/Downloads/fonts/.local ~
+ls -al ~/.local/share/fonts
+
+unzip ~/Downloads/wallpapers.zip -d ~/Downloads/
+????sudo mv ~/Downloads/wallpapers/gruvbox/usr/share/backgrounds/gruvbox /usr/share/backgrounds
+sudo rsync -av ~/Downloads/wallpapers/usr /
+ls -al /usr/share/backgrounds
+
+### Installing GNOME extensions
+unzip ~/Downloads/gnome-extensions.zip -d ~/Downloads/
+rsync -av ~/Downloads/gnome-extensions/.local ~
+ls -al ~/.local/share/gnome-shell/extensions/
+
+### Go to Gnome Shell Extensions
+unzip ~/Downloads/gnome-shell-config.zip -d ~/Downloads/
+cd ~/Downloads/gnome-shell-config
+dconf load /org/gnome/desktop/ < org-gnome-desktop.conf
+dconf load /org/gnome/shell/ < org-gnome-shell.conf
+
+## Go to settings > Multitasking > Fixed Number of Workspaces
+## Go to settings > Appearance > Add Picture...
+Computer > usr > share > backgrounds > gruvbox 
+
+## Installing zsh
+sudo dnf install zsh git curl -y
+sudo dnf install util-linux-user
+sudo chsh -s $(which zsh) $(whoami)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Installing Powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+nano ~/.zshrc
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Customizing GNOME terminal
+wget -O gogh https://git.io/vQqMr && chmod +x gogh && ./gogh && rm gogh
+
+# import GNOME terminal configurations
+cd ~/Downloads/gnome-shell-config
+dconf load /org/gnome/terminal/ < org-gnome-terminal.conf
+
+### Powerlevel10k configuration wizard
+Follow it yourself, depends on you and your machine.
+
