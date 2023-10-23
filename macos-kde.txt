@@ -1,0 +1,36 @@
+Video link - https://www.youtube.com/watch?v=jWDgdC28tYo&ab_channel=LinuxScoop
+
+Terminal 1:
+    sudo dnf update -y
+    sudo dnf upgrade -y
+    sudo dnf install curl git rsync
+    
+Go to Discover > Settings > Add Flathub
+
+Terminal 1:
+    flatpak install flathub com.github.tchx84.Flatseal
+    
+System Settings > Workspace Behavior > Desktop Effects
+Check Invert
+Check Background Contrast
+Blur
+
+System Settings > Window Management > Window Behaviour > Advanced > Window Placement: Centered
+Task Switcher > Large Icons
+KWin Scripts > Get New Scripts > Blur > 2nd option (lower file size)
+KWin Scripts > Get New Scripts > Force > Force Decorations for GTK+ 3
+Truely Maximized
+
+Download Files - https://www.pling.com/p/2062884/
+
+
+
+
+
+
+
+
+
+
+
+
