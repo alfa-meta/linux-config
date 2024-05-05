@@ -1,6 +1,3 @@
-# Linux-DE-Customizations
+# Linux Config 
 
-## Current Desktop Environments
-
-- GNOME - Gruvbox
-- KDE - MacOS
+This repo is used for storing my customizations for Linux.
